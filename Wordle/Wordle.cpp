@@ -30,13 +30,13 @@ int main() {
     bool correct = false;
     const int maxAttempts = 6;
     int attempts = 0;
-    std::vector<std::string> guessVector;
-    std::vector<std::string> answerVector;
-    std::cout << "Welcome to Wordle! You have " << maxAttempts << " attempts to guess the 5 letter word.\n";
-    std::string answer = words[99];
-    std::cout << answer;
+    std::string guess;
+    std::vector<char> guessVector(guess.begin(), guess.end());
+    std::string answer = words[random(0,99)];
+    std::vector<char> answerVector(answer.begin(), answer.end());
+    std::cout << "Welcome to Legally Distinct Wordle! You have " << maxAttempts << " attempts to guess the 5 letter word.\n";
+    std::cout << answer << '\n';
     while (attempts < maxAttempts && !correct){
-        std::string guess;
         std::cout << "Enter a word: ";
         std::cin >> guess;
         if (guess.length() != answer.length()) {
@@ -47,6 +47,5 @@ int main() {
             std::cerr << "Invalid input!\n";
             continue;
         }
-        
     }
 }
