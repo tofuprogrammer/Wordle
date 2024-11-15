@@ -31,7 +31,6 @@ int main() {
     const int maxAttempts = 6;
     int attempts = 0;
     std::string guess;
-    std::vector<char> guessVector(guess.begin(), guess.end());
     std::string answer = words[random(0,99)];
     std::vector<char> answerVector(answer.begin(), answer.end());
     std::cout << "Welcome to Legally Distinct Wordle! You have " << maxAttempts << " attempts to guess the 5 letter word.\n";
@@ -39,6 +38,7 @@ int main() {
     while (attempts < maxAttempts && !correct){
         std::cout << "Enter a word: ";
         std::cin >> guess;
+        std::vector<char> guessVector(guess.begin(), guess.end());
         if (guess.length() != answer.length()) {
             std::cerr << "Your guess is not a 5 letter word!\n";
             continue;
