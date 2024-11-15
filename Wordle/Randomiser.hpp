@@ -1,5 +1,6 @@
 #pragma once
 
+#include <random>
 //Properties for the RNG
 std::random_device device;
 std::mt19937 randomGenerator(device());
