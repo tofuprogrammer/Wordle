@@ -1,21 +1,15 @@
-//
-//  Functions.h
-//  Wordle
-//
-//  Created by Sam Hart on 15/11/2024.
-//
 
-#ifndef Functions_h
-#define Functions_h
+#ifndef Functions_hpp
+#define Functions_hpp
 
-void textBox(const std::string& inputText)
+void textBox(const std::string& word)
 {
-    const int textWidth = 1 + 4 * inputText.size(); /* Calculate the width of the line of text to be output.
+    const int wordWidth = 1 + (4 * word.size()); /* Calculate the width of the line of text to be output.
     Each character in the input string is replaced by 4 characters in the output, e.g. "a" becomes " a |".
     The + 1 accounts for the beginning pipe. */
 
     // Top row.
-    for (int i = 0; i < textWidth; i++) // Loops through this code 4 times for every character in the input string.
+    for (int i = 0; i < wordWidth; i++) // Loops through this code 4 times for every character in the input string.
     {
         if (i % 4 == 0)
         {
@@ -34,16 +28,16 @@ void textBox(const std::string& inputText)
 
     // Middle row.
     std::cout << "|"; // Outputs beginning pipe.
-    for (const char inputCharacter : inputText) // Every character in the input text is represented by 4 characters as described above.
-        // The character being represented is placed in a char type variable with the identifier "input_character".
+    for (const char character : word) // Every character in the input text is represented by 4 characters as described above.
+        // The character being represented is placed in a char type variable with the identifier "inputCharacter".
     {
-        std::cout << " " << inputCharacter << " |"; // Outputs the reformatted version of the input character.
+        std::cout << " " << character << " |"; // Outputs the reformatted version of the input character.
     }
     std::cout << '\n';
 
     // Bottom border.
     // The code for the bottom border is the same as for the top border.
-    for (int i = 0; i < textWidth; i++)
+    for (int i = 0; i < wordWidth; i++)
     {
         if (i % 4 == 0)
         {
@@ -61,4 +55,4 @@ void textBox(const std::string& inputText)
     std::cout << '\n';
 }
 
-#endif /* Functions_h */
+#endif /* Functions_hpp */
