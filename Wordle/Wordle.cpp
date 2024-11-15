@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+#include "Randomiser.hpp"
+
 int main() {
     std::string words[100] = {
             "apple", "brave", "crisp", "dance", "eagle",
