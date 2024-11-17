@@ -5,7 +5,7 @@
 #include "Randomiser.hpp"
 
 int main() {
-    std::string words[100] = {
+    std::string words[100] = { // Array of words to use
             "apple", "brave", "crisp", "dance", "eagle",
             "flame", "grape", "heart", "igloo", "jolly",
             "kneel", "lucky", "mango", "nerdy", "ocean",
@@ -27,17 +27,21 @@ int main() {
             "tried", "usher", "vigil", "waltz", "xerox",
             "zonal", "crane", "flute", "grasp", "hilly"
         };
+    
     bool correct = false;
     const int maxAttempts = 6;
     int attempts = 0;
+    
     std::string guess;
     std::string answer = words[random(0,99)];
     std::vector<char> answerVector(answer.begin(), answer.end());
+    
     std::cout << "Welcome to Legally Distinct Wordle! You have " << maxAttempts << " attempts to guess the 5 letter word.\n";
     std::cout << "If a letter is cyan, like this: (" << "\033[1;36m" << "a" << "\033[0m" << "), that means the letter is correct and in the right position.\n";
     std::cout << "If a letter is yellow, like this: (" << "\033[1;33m" << "b" << "\033[0m" << "), that means the letter is in the answer but it's in the wrong position.\n";
     std::cout << "If a letter has no special colour, like this: (c), that means it is not in the answer\n";
-    std::cout << answer << '\n';
+    std::cout << "Psst, for debugging purposes, the answer is " << answer << ".\n";
+    
     while (attempts < maxAttempts && !correct){
         std::cout << "Enter a word: ";
         std::cin >> guess;
@@ -69,7 +73,7 @@ int main() {
         }
     }
     if (attempts == maxAttempts){
-        std::cout << "You've run out of attempts. The correct word was " << answer << ".\n";
+        std::cout << "You've run out of attempts! The correct word was " << answer << ".\n";
     }
     if (correct) {
         std::cout << "You've guessed correctly!";
