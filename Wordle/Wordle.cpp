@@ -4,6 +4,15 @@
 
 #include "Randomiser.hpp"
 
+bool isAlphabetic(const std::string& input) {
+    for (char c : input) {
+        if (!isalpha(c)) {
+            return false;  // If any character is not alphabetic, return false
+        }
+    }
+    return true;  // All characters are alphabetic
+}
+
 int main() {
     std::string words[100] = { // Array of words to use
             "apple", "brave", "crisp", "dance", "eagle",
@@ -45,16 +54,19 @@ int main() {
     while (attempts < maxAttempts && !correct){
         std::cout << "Enter a word: ";
         std::cin >> guess;
-        std::transform(guess.begin(), guess.end(), guess.begin(), ::tolower);
-        std::vector<char> guessVector(guess.begin(), guess.end());
+        
+        if (std::cin.fail() || !isAlphabetic(guess)) {
+            std::cerr << "Invalid input!\n";
+            continue;
+        }
         if (guess.length() != answer.length()) {
             std::cerr << "Your guess is not a 5 letter word!\n";
             continue;
         }
-        if (std::cin.fail()) {
-            std::cerr << "Invalid input!\n";
-            continue;
-        }
+        
+        std::transform(guess.begin(), guess.end(), guess.begin(), ::tolower);
+        std::vector<char> guessVector(guess.begin(), guess.end());
+
         for (size_t counter = 0; counter < guess.length(); counter++) {
             if (guess [counter] == answer [counter]) {
                 std::cout << "\033[1;36m" << guess[counter] << "\033[0m";
