@@ -90,6 +90,7 @@ int main() {
         char playerStartChoice;
         std::cin >> playerStartChoice;
         if (playerStartChoice == 'y') {
+            clearTerminal();
             gameStart = true;
         }
         else if (playerStartChoice == 'n') {
